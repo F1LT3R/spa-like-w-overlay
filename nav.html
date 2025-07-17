@@ -1,0 +1,42 @@
+<a href="#home">Home</a>
+<a href="#about">About</a>
+
+<style>
+a {
+	display: inline-block;
+	padding: 4px 8px;
+}
+.active {
+	background: white
+}
+</style>
+
+<script>
+const pages = document.querySelectorAll('a')
+
+pages.forEach(link => link.onclick = (event) => {
+	event.preventDefault();
+
+	// Get he page name (appended to history)
+	const page = event.target.getAttribute('href');
+	
+	currentPage = page;
+
+	// Navigate to the selected page from the parent window 
+	window.parent.navigate(page);
+});
+	
+console.log('Navigation loaded:', pages);
+
+window.highlightActive = function highlightActive(page) {
+	pages.forEach(link => {
+		console.log(link.getAttribute('href'), page)
+
+		if (link.getAttribute('href') === page) {
+			link.classList.add('active');
+		} else {
+			link.classList.remove('active');
+		}
+	});
+}
+</script>

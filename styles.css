@@ -1,0 +1,53 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+iframe {
+	display: block;
+	width: 100%;
+	border: none;
+	overflow: hidden;
+}
+
+header > iframe {
+	height: 100px;
+	background-color: #fa0;
+	padding: 20px;
+	text-align: center;
+}
+
+nav > iframe {
+	height: 32px;
+	background-color: #0af;
+}
+
+main {
+	display: flex;
+	flex-direction: column;
+	height: calc(100% - 132px);
+}
+
+main > iframe {
+	height: 100%;
+	flex: 1;
+}
+
+header h1 {
+	font-size: 2em;
+	color: #333;
+	margin: 0;
+}
+
+[name="map"] {
+	position: absolute;
+	top: 32px;
+	left: 400px;
+	z-index: 1;
+	height: 400px;;
+}

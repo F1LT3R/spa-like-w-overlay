@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Iframes Example</title>
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+	<header>
+		<iframe src="./header.html" title="Header" scrolling="no"></iframe>
+	</header>
+	<nav>
+		<iframe src="./nav.html" title="Navigation" scrolling="no"></iframe>
+	</nav>
+	<main>
+		<iframe src="./home.html"></iframe>
+	</main>
+	<aside>
+		<iframe name="map" src="./map.html" title="Map" scrolling="no"></iframe>
+	</aside>
+</body>
+
+<script>
+const iframeNav = document.querySelector("nav > iframe");
+
+window.loadMain = function loadMain(page) {
+	const file = `${page.slice(1)}.html`;
+	console.log(`Loading main content from ${file}`);
+	const iframeMain = document.querySelector("main > iframe");
+	iframeMain.src = file;
+	console.log(`Setting iframe source to ${iframeMain.src}`);
+
+	iframeMain.onload = () => {
+		console.log(`Loaded ${file}`);
+		console.log(page);
+		iframeNav.contentWindow.highlightActive(page);
+	}
+}
+
+// Load on start (for refresh)
+window.loadMain(window.location.hash || "#home");
+
+window.navigate = function navigate(page) {
+	console.log(`Navigating to ${page}`);
+	history.pushState(null, "", page);
+	window.loadMain(page);
+}
+
+window.addEventListener("hashchange", function () {
+	const page = window.location.hash || "#home";
+    console.log("Hash changed to:", page);
+	iframeNav.contentWindow.highlightActive(page);
+});
+</script>
