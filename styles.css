@@ -46,7 +46,7 @@ header h1 {
 
 #map {
 	position: absolute;
-	top: 32px;
+	top: 64px;
 	left: 200px;
 	z-index: 1;
 	height: 400px;
