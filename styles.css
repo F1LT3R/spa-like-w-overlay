@@ -44,10 +44,11 @@ header h1 {
 	margin: 0;
 }
 
-[name="map"] {
+#map {
 	position: absolute;
 	top: 32px;
-	left: 400px;
+	left: 200px;
 	z-index: 1;
-	height: 400px;;
+	height: 400px;
+	width: 400px;
 }
